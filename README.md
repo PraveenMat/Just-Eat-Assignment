@@ -7,6 +7,7 @@ Using Just Eat API to display 10 results on the console using postcode. Details 
 1. **Requirements:**
    - Python 3.10 (Was coded and tested in this version of Python)
    - `requests` library (install using pip: `pip install requests`)
+   - `tabulate ` library (install using pip: `pip install tabulate `)
 
 2. **How to run the Script:**
    - Clone this repository to your machine and open up your preferred IDE.
@@ -14,6 +15,8 @@ Using Just Eat API to display 10 results on the console using postcode. Details 
      ```
      python main.py
      ```
+3. **Issue Which Could be Faced Running the Script**
+   - When the table gets printed, it might not be displayed correctly. Ensure that you have zoomed out so that the table is displayed correctly on the terminal. 
 
 ## Assumptions
 
