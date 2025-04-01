@@ -1,5 +1,7 @@
 # To requests is used to get the data
 import requests
+# Used to display the data in a table
+from tabulate import tabulate
 
 def main():
     # Used my home postcode
@@ -10,7 +12,7 @@ def main():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
     }
     
-    # Requsting the data 
+    # Requesting the data 
     try:
         response = requests.get(url, headers=headers)
         response.raise_for_status()  
@@ -27,20 +29,23 @@ def main():
         print("No restaurants found.")
         return
     
+    # List to hold the data for the table
+    table_rows = []
+    
     # Displaying the first 10 restaurants with the required fields
     for i, restaurant in enumerate(restaurants[:10], start=1):
-
+        
         # Restaurant Name
         name = restaurant.get('name', 'No Restaurant Name Found')
-
+        
         # Cuisine
         cuisines = restaurant.get('cuisines', [])
         # As there sometime multple cuisines, I join them to list out
         cuisines_names = ', '.join(c.get('name', 'Unknown Cuisine') for c in cuisines) if cuisines else 'Unknown Cuisine'
-
+        
         # Rating
         rating = restaurant.get('rating', {}).get('starRating', 'No Rating Found')
-
+        
         # Address
         addr = restaurant.get('address', {})
         first_line = addr.get('firstLine', '')
@@ -50,12 +55,14 @@ def main():
         if not address:
             address = 'No Address Found'
         
-        # Prints the name, cuisines, rating and the address
-        print(f"Restaurant {i}:")
-        print(f"  Name: {name}")
-        print(f"  Cuisines: {cuisines_names}")
-        print(f"  Rating: {rating}")
-        print(f"  Address: {address}\n")
+        # Append the restaurant's data as a row
+        table_rows.append([i, name, cuisines_names, rating, address])
+    
+    # Table headers
+    headers = ["Index", "Name", "Cuisines", "Rating", "Address"]
+    
+    # Displays table
+    print(tabulate(table_rows, headers=headers, tablefmt="pretty"))
 
 if __name__ == '__main__':
     main()
