@@ -11,7 +11,13 @@ def main():
     }
     
     # Requsting the data 
-    response = requests.get(url, headers=headers)
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  
+    except Exception as e:
+        print(f"Error fetching data: {e}")
+        return
+    
     data = response.json()
     # Returns restaurant data with key: "restaurants"
     restaurants = data.get('restaurants', [])
