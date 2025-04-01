@@ -21,9 +21,9 @@ Using Just Eat API to display 10 results on the console using postcode. Details 
 ## Assumptions
 
 **Note: Before implementing the solution, I used Postman to understand the structure of the API response and double check if authentication was needed.**
-- Any interface type is accepted (either console or Graphical User Interface (GUI)).
 - Error handling is not necessary.
-- Restaurants should have all the necessary data needed to display, but to have some error handling, I added messages (e.g. No Restaurant Name Found) to improve user experience where some restaurant data might be incomplete or missing.   
+- Restaurants should have all the necessary data needed to display, but to have some error handling, I added messages (e.g. No Restaurant Name Found) to improve user experience where some restaurant data might be incomplete or missing.  
+- There will be at least 10 restaurants displayed.
 
 ## Future Improvements
 
