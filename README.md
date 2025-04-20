@@ -1,4 +1,4 @@
-# Just Eat Assignment
+# Displaying Restaurant List
 
 Using Just Eat API to display 10 results on the console using postcode. Details include the restaurant's name, cuisine, rating, and address. 
 
